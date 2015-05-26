@@ -123,9 +123,16 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="appSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="MailSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\spsiteprov.pubxml" />
-    <None Include="Properties\webjob-publish-settings.json" />
+    <None Include="provisioningSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\SiteTemplates\ProvisioningTemplates\custom.spcolor">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
