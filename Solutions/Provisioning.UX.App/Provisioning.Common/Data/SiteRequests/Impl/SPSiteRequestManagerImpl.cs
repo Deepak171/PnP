@@ -47,15 +47,23 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
             try
             {
                 SiteRequestList.CreateSharePointRepositoryList(ctx.Web,
-                   SiteRequestList.TITLE,
-                   SiteRequestList.DESCRIPTION,
-                   SiteRequestList.LISTURL);
+                    SiteRequestList.TITLE,
+                    SiteRequestList.DESCRIPTION,
+                    SiteRequestList.LISTURL);
+                
+                Log.Info("Provisioning.Common.Data.SiteRequests.Impl.SPSiteRequestManagerImpl.HandleSiteRequestList",
+                    "Created site request list {0} in Site Collection {1}.",
+                    SiteRequestList.LISTURL,
+                    ctx.Url);
             }
             catch (Exception _ex)
             {
-                //TODO
+                Log.Fatal("Provisioning.Common.Data.SiteRequests.Impl.SPSiteRequestManagerImpl.HandleSiteRequestList",
+                    "Unable to create site request list {0} in Site Collection {1}. The Exception is {2}.",
+                    SiteRequestList.LISTURL,
+                    ctx.Url,
+                    _ex);
             }
-
         }
         /// <summary>
         /// Used to get a value from a list
@@ -73,6 +81,7 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
             var value = item[fieldName];
             return (T)value;
         }
+    
         /// <summary>
         /// 
         /// </summary>
