@@ -16,6 +16,7 @@ namespace Provisioning.UX.AppWeb.Controllers
     /// </summary>
     public class TemplateController : ApiController
     {
+        #region Public Members
         [HttpPut]
         public void Register(WebAPIContext sharePointServiceContext)
         {
@@ -31,25 +32,25 @@ namespace Provisioning.UX.AppWeb.Controllers
         [HttpGet]
         public List<SiteTemplateResults> GetSiteTemplates()
         {
+
             var _returnResults = new List<SiteTemplateResults>();
             var _siteFactory = SiteTemplateFactory.GetInstance();
             var _tm = _siteFactory.GetManager();
             var _templates = _tm.GetAvailableTemplates();
 
-            foreach (var _t in _templates)
+            foreach (var _template in _templates)
             {
                 var _st = new SiteTemplateResults();
-                _st.Title = _t.Title;
-                _st.Description = _t.Description;
-                _st.ImageUrl = _t.ImageUrl;
-                _st.HostPath = _t.HostPath;
-                _st.SharePointOnPremises = _t.SharePointOnPremises;
-                _st.TenantAdminUrl = _t.TenantAdminUrl;
+                _st.Title = _template.Title;
+                _st.Description = _template.Description;
+                _st.ImageUrl = _template.ImageUrl;
+                _st.HostPath = _template.HostPath;
+                _st.SharePointOnPremises = _template.SharePointOnPremises;
+                _st.TenantAdminUrl = _template.TenantAdminUrl;
                 _returnResults.Add(_st);
             }
             return _returnResults;
         }
-
-    
+        #endregion
     }
 }
