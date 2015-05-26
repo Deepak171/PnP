@@ -9,7 +9,7 @@
 
                 $http({
                     method: 'GET',
-                    url: '/api/provisioning/availabletemplates',
+                    url: '/api/provisioning/templates/getAvailableTemplates',
                     headers:
                     {
                         'accept': 'application/json'
@@ -27,7 +27,7 @@
                 var formData = JSON.stringify(request);
                 $http({
                     method: 'POST',
-                    url: '/api/provisioning/siterequest',
+                    url: '/api/provisioning/siteRequests/saveSiteRequest',
                     data: "=" + formData,
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 }).success(function (data, status, headers, config) {

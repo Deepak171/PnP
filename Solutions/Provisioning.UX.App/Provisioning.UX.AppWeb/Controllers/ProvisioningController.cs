@@ -18,47 +18,19 @@ using System.Web.Http.Cors;
 
 namespace Provisioning.UX.AppWeb.Controllers
 {
+    /// <summary>
+    /// Class
+    /// </summary>
     public class ProvisioningController : ApiController
     {
-        #region Instance Members
      
-        #endregion
-
         #region Public Members
         [HttpPut]
         public void Register(WebAPIContext sharePointServiceContext)
         {
             WebAPIHelper.AddToCache(sharePointServiceContext);
         }
-        
-        /// <summary>
-        /// Returns a list of available site templates to create
-        /// </summary>
-        /// <returns></returns>
-        [Route("api/provisioning/availabletemplates")]
-        [WebAPIContextFilter]
-        [HttpGet]
-        public List<SiteTemplateResults> GetSiteTemplates()
-        {
-            var _returnResults = new List<SiteTemplateResults>();
-            var _siteFactory = SiteTemplateFactory.GetInstance();
-            var _tm = _siteFactory.GetManager();
-            var _templates = _tm.GetAvailableTemplates();
-
-            foreach(var _t in _templates)
-            {
-                var _st = new SiteTemplateResults();
-                _st.Title = _t.Title;
-                _st.Description = _t.Description;
-                _st.ImageUrl = _t.ImageUrl;
-                _st.HostPath = _t.HostPath;
-                _st.SharePointOnPremises = _t.SharePointOnPremises;
-                _st.TenantAdminUrl = _t.TenantAdminUrl;
-                _returnResults.Add(_st);
-            }
-            return _returnResults;
-        }
-
+      
         /// <summary>
         /// Returns a list of available site policies
         /// </summary>
@@ -85,38 +57,6 @@ namespace Provisioning.UX.AppWeb.Controllers
             }
             return _returnResults;
         }
-      
-        /// <summary>
-        /// Saves a site request to the Data Repository
-        /// POST api/<controller>
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        [Route("api/provisioning/siterequest")]
-        [WebAPIContextFilter]
-        [HttpPost]
-        public SiteRequest SaveSiteRequest([FromBody]string value)
-        {
-            var _request = new SiteRequest();
-            _request.Success = false;
-
-            try
-            {
-                _request = JsonConvert.DeserializeObject<SiteRequest>(value);
-                this.SaveSiteRequestToRepository(_request);
-                _request.Success = true;
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Provisioning.UX.AppWeb.Controllers.ProvisioningController", 
-                    "There was an error saving the Site Request. Error Message {0} Error Stack {1}",
-                    ex.Message,
-                    ex);
-                _request.ErrorMessage = ex.Message;
-            }
-            return _request;
-
-        }
         #endregion
 
         [Route("api/provisioning/externalSharingEnabled")]
@@ -135,27 +75,6 @@ namespace Provisioning.UX.AppWeb.Controllers
             return _request;
         }
 
-        #region Private Members
-        /// <summary>
-        /// Save the Site Request to the Data Repository
-        /// </summary>
-        /// <param name="siteRequest"></param>
-        private void SaveSiteRequestToRepository(SiteRequest siteRequest)
-        {
-            try
-            {
-                var _newRequest = ObjectMapper.ToSiteRequestInformation(siteRequest);
-                ///Save the Site Request
-                ISiteRequestFactory _srf = SiteRequestFactory.GetInstance();
-                var _manager = _srf.GetSiteRequestManager();
-                _manager.CreateNewSiteRequest(_newRequest);
-            }
-            catch (Exception _ex)
-            {
-                throw;
-            }
-          
-        }
-        #endregion
+    
     }
 }
