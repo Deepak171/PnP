@@ -39,6 +39,25 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
 
         #region Private Methods
         /// <summary>
+        /// Creates the Site Request if it doesnt exist
+        /// </summary>
+        /// <param name="ctx"></param>
+        private void HandleSiteRequestList(ClientContext ctx)
+        {
+            try
+            {
+                SiteRequestList.CreateSharePointRepositoryList(ctx.Web,
+                   SiteRequestList.TITLE,
+                   SiteRequestList.DESCRIPTION,
+                   SiteRequestList.LISTURL);
+            }
+            catch (Exception _ex)
+            {
+                //TODO
+            }
+
+        }
+        /// <summary>
         /// Used to get a value from a list
         /// </summary>
         /// <param name="item"></param>
@@ -76,7 +95,7 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
         }
 
         /// <summary>
-        /// 
+        /// Method to Help with Converting to Int
         /// </summary>
         /// <param name="item"></param>
         /// <param name="fieldName"></param>
@@ -87,7 +106,7 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
         }
 
         /// <summary>
-        /// Helper to return a uint from a string field
+        /// Method to return a uint from a string field
         /// </summary>
         /// <param name="item"></param>
         /// <param name="fieldName"></param>
@@ -106,7 +125,7 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
         }
 
         /// <summary>
-        /// 
+        /// Method for working with User Fields
         /// </summary>
         /// <param name="ctx"></param>
         /// <param name="item"></param>
@@ -161,9 +180,14 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
             {
                 var _camlQuery = new CamlQuery();
                 _camlQuery.ViewXml = camlQuery;
-            //    var web = GetWeb(_manager.GetAppSettings().SPHostUrl, ctx);
                 var web = ctx.Web;
-                var list = web.Lists.GetByTitle(SiteRequestList.TITLE);
+                if (!web.ListExists(SiteRequestList.TITLE))
+                {
+                    this.HandleSiteRequestList(ctx);
+                }
+
+                var list = ctx.Web.Lists.GetByTitle(SiteRequestList.TITLE);
+
                 var _listItemCollection = list.GetItems(_camlQuery);
                 ctx.Load(_listItemCollection,
                      eachItem => eachItem.Include(
@@ -218,7 +242,13 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
                 CamlQuery _caml = new CamlQuery();
                 _caml.ViewXml = string.Format(camlQuery, filter);
                 var web = ctx.Web;
-                var list = web.Lists.GetByTitle(SiteRequestList.TITLE);
+
+                if (!web.ListExists(SiteRequestList.TITLE))
+                {
+                    this.HandleSiteRequestList(ctx);
+                }
+
+                var list = ctx.Web.Lists.GetByTitle(SiteRequestList.TITLE);
                 var _listItemCollection = list.GetItems(_caml);
 
                 ctx.Load(_listItemCollection,
@@ -317,7 +347,13 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
             UsingContext(ctx =>
             {
                 var web = ctx.Web;
-                var list = web.Lists.GetByTitle(SiteRequestList.TITLE);
+
+                if(!web.ListExists(SiteRequestList.TITLE))
+                {
+                    this.HandleSiteRequestList(ctx);
+                }
+
+                List list = web.Lists.GetByTitle(SiteRequestList.TITLE);
                 ListItemCreationInformation _listItemCreation = new ListItemCreationInformation();
                 ListItem _record = list.AddItem(_listItemCreation);
                 _record[SiteRequestFields.TITLE] = siteRequest.Title;
@@ -406,7 +442,12 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
                 Log.Info("Provisioning.Common.Data.Impl.UpdateRequestStatus", "Updating Site Request Status for URL {0} to status {1}", url, status.ToString());
                
                 var web = ctx.Web;
-                var _list = web.Lists.GetByTitle(SiteRequestList.TITLE);
+                if (!web.ListExists(SiteRequestList.TITLE))
+                {
+                    this.HandleSiteRequestList(ctx);
+                }
+
+                var _list = ctx.Web.Lists.GetByTitle(SiteRequestList.TITLE);
                 var _query = new CamlQuery();
                 _query.ViewXml = string.Format(CAML_GETREQUEST_BY_URL, url);
                 
@@ -431,6 +472,12 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
 
         }
         #endregion
+
+        #region Private Members
+      
+        #endregion
+
+
 
     }
 }

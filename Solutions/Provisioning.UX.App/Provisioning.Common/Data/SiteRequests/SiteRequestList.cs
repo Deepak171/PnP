@@ -21,7 +21,7 @@ namespace Provisioning.Common.Data.SiteRequests
         public static readonly string CONTENTTYPE_ID = "0x01008AFD1A3CDDC04ECAAED455326AC126FC";
        
 
-        public static string CreateSharePointRepositoryList(Web web, string title, string description, string url)
+        public static List CreateSharePointRepositoryList(Web web, string title, string description, string url)
         {
             List _requestList =  web.GetListByTitle(title);
 
@@ -49,7 +49,7 @@ namespace Provisioning.Common.Data.SiteRequests
             //add fields to CT
             BindFieldsToContentType(web, SiteRequestList.CONTENTTYPE_ID, _fields);
             AddContentTypeToList(web, SiteRequestList.CONTENTTYPE_ID, SiteRequestList.TITLE, _fields);
-            return _requestList.Id.ToString();
+            return _requestList;
         }
 
         static IEnumerable<Field> CreateListFields(Web web)
