@@ -42,7 +42,7 @@ namespace Provisioning.UX.AppWeb.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error("Provisioning.UX.AppWeb.Controllers.ProvisioningController",
+                Log.Error("Provisioning.UX.AppWeb.Controllers.SiteRequestController",
                     "There was an error saving the Site Request. Error Message {0} Error Stack {1}",
                     ex.Message,
                     ex);

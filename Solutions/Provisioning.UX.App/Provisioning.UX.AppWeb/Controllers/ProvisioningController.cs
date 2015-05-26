@@ -67,12 +67,23 @@ namespace Provisioning.UX.AppWeb.Controllers
             var _request = JsonConvert.DeserializeObject<ExternalSharingRequest>(value);
             _request.Success = true;
 
-            AppOnlyAuthenticationTenant _auth = new AppOnlyAuthenticationTenant();
-            _auth.TenantAdminUrl = _request.TenantAdminUrl;
-            var _service = new Office365SiteProvisioningService();
-            _service.Authentication = _auth;
-            _request.ExternalSharingEnabled = _service.IsTenantExternalSharingEnabled(_request.TenantAdminUrl);
-            return _request;
+            try
+            {
+                AppOnlyAuthenticationTenant _auth = new AppOnlyAuthenticationTenant();
+                _auth.TenantAdminUrl = _request.TenantAdminUrl;
+                var _service = new Office365SiteProvisioningService();
+                _service.Authentication = _auth;
+                _request.ExternalSharingEnabled = _service.IsTenantExternalSharingEnabled(_request.TenantAdminUrl);
+                return _request;
+            }
+            catch(Exception _ex)
+            {
+                _request.Success = false;
+                _request.ErrorMessage = _ex.Message;
+                Log.Error("ProvisioningController", "There was an error processing the request. Exception: {0}", _ex);
+                return _request;
+            }
+    
         }
 
     

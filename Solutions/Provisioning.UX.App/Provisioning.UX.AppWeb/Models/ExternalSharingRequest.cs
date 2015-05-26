@@ -17,5 +17,8 @@ namespace Provisioning.UX.AppWeb.Models
 
         [DataMember(Name = "success")]
         public bool Success { get; set; }
+
+        [DataMember(Name = "errorMessage")]
+        public string ErrorMessage { get; set; }
     }
 }
