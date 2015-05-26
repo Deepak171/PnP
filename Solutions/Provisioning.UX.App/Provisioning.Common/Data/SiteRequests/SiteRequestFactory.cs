@@ -59,16 +59,16 @@ namespace Provisioning.Common.Data.SiteRequests
             var _module = _configManager.GetModuleByName(ModuleKeys.REPOSITORYMANGER_KEY);
             var _managerTypeString = _module.ModuleType;
 
-            if (string.IsNullOrEmpty(_managerTypeString))
-            {
-                throw new ConfigurationErrorsException(PCResources.Exception_Template_Provider_Missing_Config_Message);
-            }
+            if (string.IsNullOrEmpty(_managerTypeString)) throw new ConfigurationErrorsException(PCResources.Exception_Template_Provider_Missing_Config_Message);
+          
             try { 
                 var type = _managerTypeString.Split(',');
                 var typeName = type[0];
                 var assemblyName = type[1];
-                var instance = (ISiteRequestManager)Activator.CreateInstance(assemblyName, typeName).Unwrap();
-                return instance;
+                var instance = (AbstractModule)Activator.CreateInstance(assemblyName, typeName).Unwrap();
+                instance.ConnectionString = _module.ConnectionString;
+                instance.Container = _module.Container;
+                return (ISiteRequestManager)instance;
             }
             catch(Exception _ex)
             {

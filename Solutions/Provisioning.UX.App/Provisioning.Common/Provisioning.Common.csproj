@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Azure.Documents.Client">
+      <HintPath>..\packages\Microsoft.Azure.DocumentDB.1.1.0\lib\net40\Microsoft.Azure.Documents.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -90,6 +93,7 @@
     <Compile Include="Configuration\ModuleKeys.cs" />
     <Compile Include="Configuration\ModulesSection.cs" />
     <Compile Include="Data\AbstractModule.cs" />
+    <Compile Include="Data\SiteRequests\Impl\AzureDocDbRequestManager.cs" />
     <Compile Include="Data\Templates\Impl\XMLSiteTemplateManager.cs" />
     <Compile Include="Data\Templates\ISiteTemplateFactory.cs" />
     <Compile Include="Data\Templates\ISiteTemplateManager.cs" />
