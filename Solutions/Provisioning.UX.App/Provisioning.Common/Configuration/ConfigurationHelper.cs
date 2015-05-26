@@ -42,7 +42,7 @@ namespace Provisioning.Common.Configuration
             }
             catch(SC.ConfigurationErrorsException ex)
             {
-                Log.Fatal("Provisioning.Common.Configuration.Get", "Error Occured while reading the configruation file. The Error is {0}", ex );
+                Log.Fatal("Provisioning.Common.Configuration.Get", PCResources.ConfigurationError_Reading, ex );
                 throw;
             }
         }

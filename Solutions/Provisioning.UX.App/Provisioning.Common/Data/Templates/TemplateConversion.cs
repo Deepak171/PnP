@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Provisioning.Common.Data.Templates
 {
+    /// <summary>
+    /// Internal class for Template Conversions
+    /// </summary>
     internal class TemplateConversion
     {
         internal ProvisioningTemplate HandleProvisioningTemplate(ProvisioningTemplate provisioningTemplate, SiteRequestInformation siteRequest)
@@ -65,8 +68,6 @@ namespace Provisioning.Common.Data.Templates
                 _pb.Value = prop.Value;
                 provisioningTemplate.PropertyBagEntries.Add(_pb);
             }
-
-   
         }
 
         /// <summary>

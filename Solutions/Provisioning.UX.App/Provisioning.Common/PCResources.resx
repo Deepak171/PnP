@@ -123,6 +123,12 @@
   <data name="AppSettings_KeyNotFound" xml:space="preserve">
     <value>The key {0} was not found in the config file.</value>
   </data>
+  <data name="ConfigurationError_Reading" xml:space="preserve">
+    <value>Error Occured while reading the configruation file. The Error is {0}</value>
+  </data>
+  <data name="Exception_MasterTemplateNotFound" xml:space="preserve">
+    <value>Did not find Master Template file {0}</value>
+  </data>
   <data name="Exception_Message_EmptyString_Arg" xml:space="preserve">
     <value>The passed argument is a zero-length string or contains only whitespace.</value>
   </data>
@@ -132,11 +138,41 @@
   <data name="Exception_Template_Provider_Missing_Config_Message" xml:space="preserve">
     <value>TemplateProviderType is missing from the configuration file.  Please update the configuration file.</value>
   </data>
+  <data name="FileConnectorBase_Exception" xml:space="preserve">
+    <value>There was an error loading Provisioning Connector. Exception {0}"</value>
+  </data>
+  <data name="SiteRequestNew_Successfull" xml:space="preserve">
+    <value>New Site Request Submitted for URL {0} successfull</value>
+  </data>
+  <data name="SiteRequestUpdate_Successfull" xml:space="preserve">
+    <value>Updating Site Request Status for URL {0} to status {1}</value>
+  </data>
+  <data name="SiteRequest_List_Creation_Error" xml:space="preserve">
+    <value>Unable to create site request list {0} in Site Collection {1}. The Exception is {2}</value>
+  </data>
+  <data name="SiteRequest_List_Creation_SuccessFull" xml:space="preserve">
+    <value>Created site request list {0} in Site Collection {1}</value>
+  </data>
+  <data name="SiteTemplate_Factory_Created_Instance" xml:space="preserve">
+    <value>Factory created instance {0}</value>
+  </data>
+  <data name="SiteTemplate_Factory_Created_Instance_Exception" xml:space="preserve">
+    <value>Unable to create instance {0} exception {1}</value>
+  </data>
+  <data name="TemplateProviderBase_Exception_Message" xml:space="preserve">
+    <value>There was an error loading Template Provider. Exception {0}"</value>
+  </data>
   <data name="XMLTemplateManager_Error" xml:space="preserve">
-    <value>There was an Error Processing Template.Config. Exception: {0} StackTrace: {1}</value>
+    <value>There was an Error Processing Template.Config. Exception: {0} StackTrace: {1}.</value>
+  </data>
+  <data name="XMLTemplateManager_File_Found" xml:space="preserve">
+    <value>Found Master Template file {0}</value>
   </data>
   <data name="XMLTemplateManager_File_NotFound" xml:space="preserve">
     <value>Template.config was not found: {0}</value>
+  </data>
+  <data name="XMLTemplateManager_Loaded_ConfigFile" xml:space="preserve">
+    <value>Loaded Configuration File {0} for templates</value>
   </data>
   <data name="XMLTemplateManager_TryRead_ConfigFile" xml:space="preserve">
     <value>Trying to read Template Configuration File {0}</value>

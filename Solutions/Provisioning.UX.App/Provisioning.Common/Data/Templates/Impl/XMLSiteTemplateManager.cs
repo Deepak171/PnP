@@ -14,6 +14,9 @@ using System.Xml.Linq;
 
 namespace Provisioning.Common.Data.Templates.Impl
 {
+    /// <summary>
+    /// Implementation Class for working with Templates in XML Format
+    /// </summary>
     internal class XMLSiteTemplateManager : AbstractModule, ISiteTemplateManager
     {
         #region Instance Members
@@ -59,14 +62,14 @@ namespace Provisioning.Common.Data.Templates.Impl
             {
                 ReflectionHelper _reflectionHelper = new ReflectionHelper();
                 var _provider = _reflectionHelper.GetTemplateProvider(ModuleKeys.XMLTEMPLATEPROVIDER_KEY);
-              
-         //       XMLFileSystemTemplateProvider _xmlProvider = new XMLFileSystemTemplateProvider(this.ConnectionString, this.Container);
                 var _pt = _provider.GetTemplate(name);
                 return _pt;
             }
             catch(Exception _ex)
             {
-                throw;
+                var _message = string.Format(PCResources.TemplateProviderBase_Exception_Message, _ex.Message);
+                Log.Fatal("Provisioning.Common.Data.Templates.Impl.XMLSiteTemplateManager", PCResources.TemplateProviderBase_Exception_Message, _ex);
+                throw new DataStoreException(_message, _ex);
             }
         }
         
@@ -86,7 +89,7 @@ namespace Provisioning.Common.Data.Templates.Impl
                 {
                     XDocument _doc = XDocument.Load(_filePath);
                     this._data = XmlSerializerHelper.Deserialize<XMLSiteTemplateData>(_doc);
-                    Log.Info("Provisioning.Common.Data.Templates.Impl.XMLSiteTemplateManager.LoadXML", "Loaded Configuration File {0} for templates", _filePath);
+                    Log.Info("Provisioning.Common.Data.Templates.Impl.XMLSiteTemplateManager.LoadXML", PCResources.XMLTemplateManager_Loaded_ConfigFile, _filePath);
                 }
                 else
                 {
@@ -95,16 +98,16 @@ namespace Provisioning.Common.Data.Templates.Impl
                     _fileExists = System.IO.File.Exists(_filePath);
                     if (_fileExists)
                     {
-                        Log.Info("Provisioning.Common.Data.Templates.Impl.XMLSiteTemplateManager.LoadXML", "Found Master Template file {0}", _filePath);
+                        Log.Info("Provisioning.Common.Data.Templates.Impl.XMLSiteTemplateManager.LoadXML", PCResources.XMLTemplateManager_File_Found, _filePath);
                         XDocument _doc = XDocument.Load(_filePath);
                         this._data = XmlSerializerHelper.Deserialize<XMLSiteTemplateData>(_doc);
-                        Log.Info("Provisioning.Common.Data.Templates.Impl.XMLSiteTemplateManager.LoadXML", "Loaded Configuration File {0} for templates", _filePath);
+                        Log.Info("Provisioning.Common.Data.Templates.Impl.XMLSiteTemplateManager.LoadXML", PCResources.XMLTemplateManager_Loaded_ConfigFile, _filePath);
                     }
                     else
                     {
-                        var _message = string.Format("Did not find Master Template file {0}", _filePath);
+                        var _message = string.Format(PCResources.Exception_MasterTemplateNotFound, _filePath);
                         Log.Fatal("Provisioning.Common.Data.Templates.Impl.XMLSiteTemplateManager.LoadXML", _message);
-                        throw new Exception(_message);
+                        throw new DataStoreException(_message);
                     }
                 }
             }

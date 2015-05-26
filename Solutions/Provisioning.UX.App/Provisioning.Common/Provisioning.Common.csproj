@@ -93,11 +93,11 @@
     <Compile Include="Configuration\ModuleKeys.cs" />
     <Compile Include="Configuration\ModulesSection.cs" />
     <Compile Include="Data\AbstractModule.cs" />
+    <Compile Include="Data\FactoryException.cs" />
     <Compile Include="Data\SiteRequests\Impl\AzureDocDbRequestManager.cs" />
     <Compile Include="Data\Templates\Impl\XMLSiteTemplateManager.cs" />
     <Compile Include="Data\Templates\ISiteTemplateFactory.cs" />
     <Compile Include="Data\Templates\ISiteTemplateManager.cs" />
-    <Compile Include="Data\Templates\SiteTemplate.cs" />
     <Compile Include="Data\Templates\SiteTemplateFactory.cs" />
     <Compile Include="Data\Templates\Template.cs" />
     <Compile Include="Configuration\ConfigurationHelper.cs" />

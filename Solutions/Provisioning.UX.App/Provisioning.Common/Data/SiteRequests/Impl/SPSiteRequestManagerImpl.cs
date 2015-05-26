@@ -52,14 +52,14 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
                     SiteRequestList.LISTURL);
                 
                 Log.Info("Provisioning.Common.Data.SiteRequests.Impl.SPSiteRequestManagerImpl.HandleSiteRequestList",
-                    "Created site request list {0} in Site Collection {1}.",
+                    PCResources.SiteRequest_List_Creation_SuccessFull, SiteRequestList.LISTURL, ctx.Url,
                     SiteRequestList.LISTURL,
                     ctx.Url);
             }
             catch (Exception _ex)
             {
                 Log.Fatal("Provisioning.Common.Data.SiteRequests.Impl.SPSiteRequestManagerImpl.HandleSiteRequestList",
-                    "Unable to create site request list {0} in Site Collection {1}. The Exception is {2}.",
+                    PCResources.SiteRequest_List_Creation_Error,
                     SiteRequestList.LISTURL,
                     ctx.Url,
                     _ex);
@@ -357,8 +357,7 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
             {
                 var web = ctx.Web;
 
-                if(!web.ListExists(SiteRequestList.TITLE))
-                {
+                if(!web.ListExists(SiteRequestList.TITLE)) {
                     this.HandleSiteRequestList(ctx);
                 }
 
@@ -409,6 +408,7 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
             
                 _record.Update();
                 ctx.ExecuteQuery();
+                Log.Info("Provisioning.Common.Data.Impl.UpdateRequestStatus", PCResources.SiteRequestNew_Successfull, siteRequest.Url);
             }
             );
 
@@ -448,7 +448,7 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
         {
             UsingContext(ctx =>
             {
-                Log.Info("Provisioning.Common.Data.Impl.UpdateRequestStatus", "Updating Site Request Status for URL {0} to status {1}", url, status.ToString());
+                Log.Info("Provisioning.Common.Data.Impl.UpdateRequestStatus", PCResources.SiteRequestUpdate_Successfull, url, status.ToString());
                
                 var web = ctx.Web;
                 if (!web.ListExists(SiteRequestList.TITLE))
@@ -481,12 +481,5 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
 
         }
         #endregion
-
-        #region Private Members
-      
-        #endregion
-
-
-
     }
 }

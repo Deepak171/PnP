@@ -37,9 +37,7 @@ namespace Provisioning.Common.Utilities
             }
             catch (Exception _ex)
             {
-                Log.Error("Provisioning.Common.SiteProvisioningManager",
-                    "There was an error loading Provisioning Connector. Exception {0}",
-                    _ex);
+                Log.Error("Provisioning.Common.SiteProvisioningManager", PCResources.FileConnectorBase_Exception, _ex);
                 throw;
             }
         }
@@ -69,9 +67,7 @@ namespace Provisioning.Common.Utilities
             }
             catch (Exception _ex)
             {
-                Log.Error("Provisioning.Common.SiteProvisioningManager",
-                    "There was an error loading Provisioning Connector. Exception {0}",
-                    _ex);
+                Log.Error("Provisioning.Common.SiteProvisioningManager", PCResources.FileConnectorBase_Exception, _ex);
                 throw;
             }
         }

@@ -79,6 +79,24 @@ namespace Provisioning.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error Occured while reading the configruation file. The Error is {0}.
+        /// </summary>
+        internal static string ConfigurationError_Reading {
+            get {
+                return ResourceManager.GetString("ConfigurationError_Reading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Did not find Master Template file {0}.
+        /// </summary>
+        internal static string Exception_MasterTemplateNotFound {
+            get {
+                return ResourceManager.GetString("Exception_MasterTemplateNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The passed argument is a zero-length string or contains only whitespace..
         /// </summary>
         internal static string Exception_Message_EmptyString_Arg {
@@ -106,11 +124,92 @@ namespace Provisioning.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There was an Error Processing Template.Config. Exception: {0} StackTrace: {1}.
+        ///   Looks up a localized string similar to There was an error loading Provisioning Connector. Exception {0}&quot;.
+        /// </summary>
+        internal static string FileConnectorBase_Exception {
+            get {
+                return ResourceManager.GetString("FileConnectorBase_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to create site request list {0} in Site Collection {1}. The Exception is {2}.
+        /// </summary>
+        internal static string SiteRequest_List_Creation_Error {
+            get {
+                return ResourceManager.GetString("SiteRequest_List_Creation_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created site request list {0} in Site Collection {1}.
+        /// </summary>
+        internal static string SiteRequest_List_Creation_SuccessFull {
+            get {
+                return ResourceManager.GetString("SiteRequest_List_Creation_SuccessFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Site Request Submitted for URL {0} successfull.
+        /// </summary>
+        internal static string SiteRequestNew_Successfull {
+            get {
+                return ResourceManager.GetString("SiteRequestNew_Successfull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Site Request Status for URL {0} to status {1}.
+        /// </summary>
+        internal static string SiteRequestUpdate_Successfull {
+            get {
+                return ResourceManager.GetString("SiteRequestUpdate_Successfull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Factory created instance {0}.
+        /// </summary>
+        internal static string SiteTemplate_Factory_Created_Instance {
+            get {
+                return ResourceManager.GetString("SiteTemplate_Factory_Created_Instance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to create instance {0} exception {1}.
+        /// </summary>
+        internal static string SiteTemplate_Factory_Created_Instance_Exception {
+            get {
+                return ResourceManager.GetString("SiteTemplate_Factory_Created_Instance_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error loading Template Provider. Exception {0}&quot;.
+        /// </summary>
+        internal static string TemplateProviderBase_Exception_Message {
+            get {
+                return ResourceManager.GetString("TemplateProviderBase_Exception_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an Error Processing Template.Config. Exception: {0} StackTrace: {1}..
         /// </summary>
         internal static string XMLTemplateManager_Error {
             get {
                 return ResourceManager.GetString("XMLTemplateManager_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found Master Template file {0}.
+        /// </summary>
+        internal static string XMLTemplateManager_File_Found {
+            get {
+                return ResourceManager.GetString("XMLTemplateManager_File_Found", resourceCulture);
             }
         }
         
@@ -120,6 +219,15 @@ namespace Provisioning.Common {
         internal static string XMLTemplateManager_File_NotFound {
             get {
                 return ResourceManager.GetString("XMLTemplateManager_File_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loaded Configuration File {0} for templates.
+        /// </summary>
+        internal static string XMLTemplateManager_Loaded_ConfigFile {
+            get {
+                return ResourceManager.GetString("XMLTemplateManager_Loaded_ConfigFile", resourceCulture);
             }
         }
         
