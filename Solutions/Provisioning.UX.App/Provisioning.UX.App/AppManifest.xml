@@ -9,8 +9,7 @@
   <Properties>
     <Title>Provisioning.UX.App</Title>
     <StartPage>~remoteAppUrl/Pages/Default.aspx?{StandardTokens}</StartPage>
-    <InstalledEventEndpoint>~remoteAppUrl/Services/AppEventReceiver.svc</InstalledEventEndpoint>
-  </Properties>
+   </Properties>
 
   <AppPrincipal>
     <RemoteWebApplication ClientId="*" />
