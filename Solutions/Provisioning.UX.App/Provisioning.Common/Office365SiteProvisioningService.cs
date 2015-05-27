@@ -33,7 +33,7 @@ namespace Provisioning.Common
      
         public override void CreateSiteCollection(SiteRequestInformation siteRequest, Template template)
         {
-            Log.Info("Provisioning.Common.Office365SiteProvisioningService.CreateSiteCollection", "Creating Site Collection with url {0}", siteRequest.Url);
+            Log.Info("Provisioning.Common.Office365SiteProvisioningService.CreateSiteCollection", PCResources.SiteCreation_Creation_Starting, siteRequest.Url);
             UsingContext(ctx =>
             {
                 try
@@ -73,10 +73,12 @@ namespace Provisioning.Common
                  }
                 catch (Exception ex)
                 {
-                    Log.Error("Provisioning.Common.Office365SiteProvisioningService.CreateSiteCollection", "An Error occured occured while provisioning the site {0}. The Error Message: {1}, Exception: {2}", siteRequest.Url, ex.Message, ex);
+                    Log.Error("Provisioning.Common.Office365SiteProvisioningService.CreateSiteCollection",
+                        PCResources.SiteRequest_List_Creation_Error, 
+                        siteRequest.Url, ex.Message, ex);
                     throw;
                 }
-                Log.Info("Provisioning.Common.Office365SiteProvisioningService.CreateSiteCollection", "Site Collection {0} created:", siteRequest.Url);
+                Log.Info("Provisioning.Common.Office365SiteProvisioningService.CreateSiteCollection", PCResources.SiteCreation_Creation_Successfull, siteRequest.Url);
             });
         }
 
@@ -107,12 +109,13 @@ namespace Provisioning.Common
                         _siteProps.SharingCapability = _targetSharingCapability;
                         _siteProps.Update();
                         ctx.ExecuteQuery();
+                        Log.Info("Provisioning.Common.Office365SiteProvisioningService.SetExternalSharing", PCResources.ExternalSharing_Successfull, siteInfo.Url);
                     }
                    
                 }
                 catch(Exception _ex)
                 {
-                    //TODO LOG
+                    Log.Info("Provisioning.Common.Office365SiteProvisioningService.SetExternalSharing", PCResources.ExternalSharing_Exception, siteInfo.Url, _ex);
                 }
              
             });

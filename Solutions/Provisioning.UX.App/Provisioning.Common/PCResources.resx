@@ -138,8 +138,26 @@
   <data name="Exception_Template_Provider_Missing_Config_Message" xml:space="preserve">
     <value>TemplateProviderType is missing from the configuration file.  Please update the configuration file.</value>
   </data>
+  <data name="ExternalSharing_Exception" xml:space="preserve">
+    <value>Unable to enable external Sharing on Site {0}, Exception is {1}</value>
+  </data>
+  <data name="ExternalSharing_NotSupported" xml:space="preserve">
+    <value>External Sharing is not supported. Site Url {0}</value>
+  </data>
+  <data name="ExternalSharing_Successfull" xml:space="preserve">
+    <value>Enabled External Sharing on Site Url {0}</value>
+  </data>
   <data name="FileConnectorBase_Exception" xml:space="preserve">
     <value>There was an error loading Provisioning Connector. Exception {0}"</value>
+  </data>
+  <data name="SiteCreation_Creation_Failure" xml:space="preserve">
+    <value>An Error occured occured while creatingt the site collection {0}. The Error is {1}. Inner Exception {2}</value>
+  </data>
+  <data name="SiteCreation_Creation_Starting" xml:space="preserve">
+    <value>Creating Site Collection with url {0}</value>
+  </data>
+  <data name="SiteCreation_Creation_Successfull" xml:space="preserve">
+    <value>Site Collection {0} created:</value>
   </data>
   <data name="SiteRequestNew_Successfull" xml:space="preserve">
     <value>New Site Request Submitted for URL {0} successfull</value>
@@ -158,6 +176,30 @@
   </data>
   <data name="SiteTemplate_Factory_Created_Instance_Exception" xml:space="preserve">
     <value>Unable to create instance {0} exception {1}</value>
+  </data>
+  <data name="Site_Web_DefaultGroups_Created" xml:space="preserve">
+    <value>Default Groups for site {0} created</value>
+  </data>
+  <data name="Site_Web_Groups_Security_Permissions_Set" xml:space="preserve">
+    <value>Setting group Security Permissions for {0}, {1}, {2}.</value>
+  </data>
+  <data name="Site_Web_MemberGroup_Description" xml:space="preserve">
+    <value>Use this group to grant people contribute permissions to the SharePoint site</value>
+  </data>
+  <data name="Site_Web_MemberGroup_Title" xml:space="preserve">
+    <value>{0} Members</value>
+  </data>
+  <data name="Site_Web_OwnerGroup_Description" xml:space="preserve">
+    <value>Use this group to grant people full control permissions to the SharePoint site</value>
+  </data>
+  <data name="Site_Web_OwnerGroup_Title" xml:space="preserve">
+    <value>{0} Owners</value>
+  </data>
+  <data name="Site_Web_VisitorGroup_Description" xml:space="preserve">
+    <value>Use this group to grant people read permissions to the SharePoint site</value>
+  </data>
+  <data name="Site_Web_VisitorGroup_Title" xml:space="preserve">
+    <value>{0} Visitors</value>
   </data>
   <data name="TemplateProviderBase_Exception_Message" xml:space="preserve">
     <value>There was an error loading Template Provider. Exception {0}"</value>

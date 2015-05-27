@@ -38,14 +38,9 @@ namespace Provisioning.Common
         /// <param name="properties"></param>
         public virtual void HandleDefaultGroups(SiteRequestInformation properties)
         {            
-            //Shoud use a resource file
-            string _ownerGroupFormat = "{0} Owners";
-            string _memberGroupFormat = "{0} Members";
-            string _visitorGroupFormat = "{0} Visitors";
-
-            string _ownerGroupDisplayName =string.Format(_ownerGroupFormat, properties.Title);
-            string _memberGroupDisplayName = string.Format(_memberGroupFormat, properties.Title);
-            string _vistorGroupDisplayName = string.Format(_visitorGroupFormat, properties.Title);
+            string _ownerGroupDisplayName =string.Format(PCResources.Site_Web_OwnerGroup_Title, properties.Title);
+            string _memberGroupDisplayName = string.Format(PCResources.Site_Web_MemberGroup_Title, properties.Title);
+            string _vistorGroupDisplayName = string.Format(PCResources.Site_Web_VisitorGroup_Title, properties.Title);
 
             UsingContext(ctx =>
             {
@@ -62,19 +57,19 @@ namespace Provisioning.Common
                 Group _memberGroup;
                 Group _visitorGroup;
                 if (web.AssociatedOwnerGroup.ServerObjectIsNull == true) {
-                    _ownerGroup = web.AddGroup(_ownerGroupDisplayName, "Use this group to grant people full control permissions to the SharePoint site", true, false);
+                    _ownerGroup = web.AddGroup(_ownerGroupDisplayName, PCResources.Site_Web_OwnerGroup_Description, true, false);
                 }
                 else {
                     _ownerGroup = web.AssociatedOwnerGroup;
                 }
                 if (web.AssociatedMemberGroup.ServerObjectIsNull == true) {
-                    _memberGroup = web.AddGroup(_memberGroupDisplayName, "Use this group to grant people full control permissions to the SharePoint site", false, false);
+                    _memberGroup = web.AddGroup(_memberGroupDisplayName, PCResources.Site_Web_MemberGroup_Description, false, false);
                 }
                 else {
                     _memberGroup = web.AssociatedMemberGroup;
                 }
                 if (web.AssociatedVisitorGroup.ServerObjectIsNull == true) {
-                        _visitorGroup = web.AddGroup(_vistorGroupDisplayName, "Use this group to grant people full control permissions to the SharePoint site", false, false );
+                        _visitorGroup = web.AddGroup(_vistorGroupDisplayName, PCResources.Site_Web_VisitorGroup_Description, false, false );
                 }
                 else {
                     _visitorGroup = web.AssociatedVisitorGroup;
@@ -82,7 +77,7 @@ namespace Provisioning.Common
 
                 web.AssociateDefaultGroups(_ownerGroup, _memberGroup, _visitorGroup);
                 ctx.ExecuteQuery();
-                Log.Info("Provisioning.Common.OnPremSiteProvisioningService.HandleDefaultGroups", "Default Groups for site {0} created:", properties.Url);
+                Log.Info("Provisioning.Common.OnPremSiteProvisioningService.HandleDefaultGroups", PCResources.Site_Web_DefaultGroups_Created, properties.Url);
 
                 using (var newSiteCtx = ctx.Clone(properties.Url))
                 {
@@ -90,7 +85,7 @@ namespace Provisioning.Common
                     newSiteCtx.Web.AddPermissionLevelToGroup(_memberGroupDisplayName, RoleType.Editor);
                     newSiteCtx.Web.AddPermissionLevelToGroup(_vistorGroupDisplayName, RoleType.Reader);
                     newSiteCtx.ExecuteQuery();
-                    Log.Info("Provisioning.Common.OnPremSiteProvisioningService.HandleDefaultGroups", "Setting group Security Permissions for {0}, {1}, {2}.", 
+                    Log.Info("Provisioning.Common.OnPremSiteProvisioningService.HandleDefaultGroups", PCResources.Site_Web_Groups_Security_Permissions_Set, 
                         _ownerGroupDisplayName, 
                         _memberGroupDisplayName, 
                         _vistorGroupDisplayName);
@@ -101,7 +96,7 @@ namespace Provisioning.Common
 
         public override void CreateSiteCollection(SiteRequestInformation siteRequest, Template template)
         {
-            Log.Info("Provisioning.Common.OnPremSiteProvisioningService.CreateSiteCollection", "Creating Site Collection with url {0}", siteRequest.Url);
+            Log.Info("Provisioning.Common.OnPremSiteProvisioningService.CreateSiteCollection", PCResources.SiteCreation_Creation_Starting, siteRequest.Url);
             
             Web _web = null;
             try
@@ -139,13 +134,13 @@ namespace Provisioning.Common
             catch(Exception ex)
             {
                 Log.Error("Provisioning.Common.OnPremSiteProvisioningService.CreateSiteCollection", 
-                    "An Error occured occured while process the site request for {0}. The Error is {1}. Inner Exception {2}", 
+                    PCResources.SiteRequest_List_Creation_Error, 
                     siteRequest.Url, 
                     ex,
                     ex.InnerException);
                 throw;
             }
-            Log.Info("Provisioning.Common.OnPremSiteProvisioningService.CreateSiteCollection", "Site Collection {0} created:", siteRequest.Url);
+            Log.Info("Provisioning.Common.OnPremSiteProvisioningService.CreateSiteCollection", PCResources.SiteCreation_Creation_Successfull, siteRequest.Url);
             this.HandleDefaultGroups(siteRequest);
         }
 
@@ -155,6 +150,7 @@ namespace Provisioning.Common
         /// <returns></returns>
         public override bool IsTenantExternalSharingEnabled(string tenantUrl)
         {
+            Log.Warning("Provisioning.Common.OnPremSiteProvisioningService.IsTenantExternalSharingEnabled", PCResources.ExternalSharing_NotSupported, tenantUrl);
             return false;
         }
 
@@ -164,7 +160,7 @@ namespace Provisioning.Common
         /// <param name="url"></param>
         public override void SetExternalSharing(SiteRequestInformation siteInfo)
         {
-            //TODO LOG 
+            Log.Warning("Provisioning.Common.OnPremSiteProvisioningService.SetExternalSharing", PCResources.ExternalSharing_NotSupported, siteInfo.Url);
             return;
         }
     }

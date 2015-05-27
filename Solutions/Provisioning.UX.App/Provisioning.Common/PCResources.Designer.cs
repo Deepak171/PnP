@@ -124,11 +124,137 @@ namespace Provisioning.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to enable external Sharing on Site {0}, Exception is {1}.
+        /// </summary>
+        internal static string ExternalSharing_Exception {
+            get {
+                return ResourceManager.GetString("ExternalSharing_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to External Sharing is not supported. Site Url {0}.
+        /// </summary>
+        internal static string ExternalSharing_NotSupported {
+            get {
+                return ResourceManager.GetString("ExternalSharing_NotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled External Sharing on Site Url {0}.
+        /// </summary>
+        internal static string ExternalSharing_Successfull {
+            get {
+                return ResourceManager.GetString("ExternalSharing_Successfull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There was an error loading Provisioning Connector. Exception {0}&quot;.
         /// </summary>
         internal static string FileConnectorBase_Exception {
             get {
                 return ResourceManager.GetString("FileConnectorBase_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Groups for site {0} created.
+        /// </summary>
+        internal static string Site_Web_DefaultGroups_Created {
+            get {
+                return ResourceManager.GetString("Site_Web_DefaultGroups_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting group Security Permissions for {0}, {1}, {2}..
+        /// </summary>
+        internal static string Site_Web_Groups_Security_Permissions_Set {
+            get {
+                return ResourceManager.GetString("Site_Web_Groups_Security_Permissions_Set", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use this group to grant people contribute permissions to the SharePoint site.
+        /// </summary>
+        internal static string Site_Web_MemberGroup_Description {
+            get {
+                return ResourceManager.GetString("Site_Web_MemberGroup_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Members.
+        /// </summary>
+        internal static string Site_Web_MemberGroup_Title {
+            get {
+                return ResourceManager.GetString("Site_Web_MemberGroup_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use this group to grant people full control permissions to the SharePoint site.
+        /// </summary>
+        internal static string Site_Web_OwnerGroup_Description {
+            get {
+                return ResourceManager.GetString("Site_Web_OwnerGroup_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Owners.
+        /// </summary>
+        internal static string Site_Web_OwnerGroup_Title {
+            get {
+                return ResourceManager.GetString("Site_Web_OwnerGroup_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use this group to grant people read permissions to the SharePoint site.
+        /// </summary>
+        internal static string Site_Web_VisitorGroup_Description {
+            get {
+                return ResourceManager.GetString("Site_Web_VisitorGroup_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Visitors.
+        /// </summary>
+        internal static string Site_Web_VisitorGroup_Title {
+            get {
+                return ResourceManager.GetString("Site_Web_VisitorGroup_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An Error occured occured while creatingt the site collection {0}. The Error is {1}. Inner Exception {2}.
+        /// </summary>
+        internal static string SiteCreation_Creation_Failure {
+            get {
+                return ResourceManager.GetString("SiteCreation_Creation_Failure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Site Collection with url {0}.
+        /// </summary>
+        internal static string SiteCreation_Creation_Starting {
+            get {
+                return ResourceManager.GetString("SiteCreation_Creation_Starting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Site Collection {0} created:.
+        /// </summary>
+        internal static string SiteCreation_Creation_Successfull {
+            get {
+                return ResourceManager.GetString("SiteCreation_Creation_Successfull", resourceCulture);
             }
         }
         

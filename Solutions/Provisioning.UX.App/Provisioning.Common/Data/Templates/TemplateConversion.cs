@@ -23,6 +23,7 @@ namespace Provisioning.Common.Data.Templates
             return provisioningTemplate;
         }
 
+
         private void HandleExternalSharing(ProvisioningTemplate provisioningTemplate, SiteRequestInformation siteRequest)
         {
             //EXTERNAL SHARING CUSTOM ACTION MUST BE DEFINED IN TEMPLATE. IF THE SITE REQUEST DOES NOT HAVE EXTERNAL SHARING ENABLE WE WILL REMOVE THE CUSTOM ACCTION
@@ -46,7 +47,6 @@ namespace Provisioning.Common.Data.Templates
                 provisioningTemplate.SitePolicy = siteRequest.SitePolicy;
             }
         }
-
         private void HandleSecurity(ProvisioningTemplate provisioningTemplate, SiteRequestInformation siteRequest)
         {
            foreach(var _Admin in siteRequest.AdditionalAdministrators)
@@ -56,7 +56,6 @@ namespace Provisioning.Common.Data.Templates
                provisioningTemplate.Security.AdditionalAdministrators.Add(_user);
            }
         }
-
         private void HandlePropertyBagEntries(ProvisioningTemplate provisioningTemplate, SiteRequestInformation siteRequest)
         {
             Dictionary<string, string> _props = JsonConvert.DeserializeObject<Dictionary<string, string>>(siteRequest.PropertiesJSON);
@@ -69,7 +68,6 @@ namespace Provisioning.Common.Data.Templates
                 provisioningTemplate.PropertyBagEntries.Add(_pb);
             }
         }
-
         /// <summary>
         /// Member to handle the Url of custom actions
         /// </summary>
