@@ -60,7 +60,10 @@ namespace Provisioning.Common
                                 }
                 catch(Exception ex)
                 {
-                    //LOG
+                    Log.Warning("Provisioning.Common.AbstractSiteProvisioningService.IsTenantExternalSharingEnabled", 
+                        PCResources.ExternalSharing_Enabled_Error_Message, 
+                        tenantUrl, 
+                        ex);
                 }
             });
 
@@ -87,8 +90,6 @@ namespace Provisioning.Common
             {
                 var _web = ctx.Web;
                 bool _policyApplied = _web.ApplySitePolicy(policyName);
-
-                //TODO LOGO MESSAGE
             });
         }
 

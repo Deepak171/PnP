@@ -138,6 +138,9 @@
   <data name="Exception_Template_Provider_Missing_Config_Message" xml:space="preserve">
     <value>TemplateProviderType is missing from the configuration file.  Please update the configuration file.</value>
   </data>
+  <data name="ExternalSharing_Enabled_Error_Message" xml:space="preserve">
+    <value>There was an error checking if External Sharing is enabled. Tenant Admin Url {0}, Exception {1}</value>
+  </data>
   <data name="ExternalSharing_Exception" xml:space="preserve">
     <value>Unable to enable external Sharing on Site {0}, Exception is {1}</value>
   </data>

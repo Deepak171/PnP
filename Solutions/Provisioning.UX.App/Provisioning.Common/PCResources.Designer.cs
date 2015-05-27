@@ -124,6 +124,15 @@ namespace Provisioning.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error checking if External Sharing is enabled. Tenant Admin Url {0}, Exception {1}.
+        /// </summary>
+        internal static string ExternalSharing_Enabled_Error_Message {
+            get {
+                return ResourceManager.GetString("ExternalSharing_Enabled_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to enable external Sharing on Site {0}, Exception is {1}.
         /// </summary>
         internal static string ExternalSharing_Exception {

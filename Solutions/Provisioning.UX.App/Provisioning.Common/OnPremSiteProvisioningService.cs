@@ -32,7 +32,7 @@ namespace Provisioning.Common
         #endregion
        
         /// <summary>
-        /// With on-premieses builds default groups are not created during site provisioning 
+        /// With on-premises builds default groups are not created during site provisioning 
         /// so we have to create them.
         /// </summary>
         /// <param name="properties"></param>
