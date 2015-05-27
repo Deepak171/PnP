@@ -17,7 +17,7 @@ namespace Provisioning.Common.Data.SiteRequests.Impl
     /// <summary>
     /// Implmentation class for the Site Request Repository that leverages SharePoint as the datasource.
     /// </summary>
-    internal class SPSiteRequestManagerImpl : AbstractModule, ISiteRequestManager, ISharePointService
+    internal class SPSiteRequestManagerImpl : AbstractModule, ISiteRequestManager, ISharePointClientService
     {
         #region Private Instance Members
         private static readonly IConfigurationFactory _cf = ConfigurationFactory.GetInstance();

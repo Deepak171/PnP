@@ -10,7 +10,7 @@ namespace Provisioning.Common
     /// <summary>
     /// Interface used to implement Services that use SharePoint CSOM
     /// </summary>
-    public interface ISharePointService
+    public interface ISharePointClientService
     {
         /// <summary>
         /// Delegate that is used by the implementation class for working with ClientContext Object

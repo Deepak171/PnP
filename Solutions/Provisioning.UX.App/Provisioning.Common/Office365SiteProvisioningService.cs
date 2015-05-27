@@ -82,6 +82,10 @@ namespace Provisioning.Common
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="siteInfo"></param>
         public override void SetExternalSharing(SiteRequestInformation siteInfo)
         {
             UsingContext(ctx =>

@@ -21,7 +21,7 @@ namespace Provisioning.Common
     /// <summary>
     /// Abstract Site Provisioning Service
     /// </summary>
-    public abstract class AbstractSiteProvisioningService : ISiteProvisioning, ISharePointService
+    public abstract class AbstractSiteProvisioningService : ISiteProvisioning, ISharePointClientService
     {
         #region Properties
         /// <summary>

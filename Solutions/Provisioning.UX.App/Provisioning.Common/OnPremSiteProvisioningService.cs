@@ -20,7 +20,7 @@ namespace Provisioning.Common
     /// <summary>
     /// Site Provisioning Service Implementation for On-premises and Office 365 SPO-D
     /// </summary>
-    public class OnPremSiteProvisioningService : AbstractSiteProvisioningService, ISharePointService
+    public class OnPremSiteProvisioningService : AbstractSiteProvisioningService, ISharePointClientService
     {
         #region Constructor
         /// <summary>
@@ -145,7 +145,8 @@ namespace Provisioning.Common
         }
 
         /// <summary>
-        /// 
+        /// Returns if External Sharing is enabled. 
+        /// This is not supported in on-premises builds
         /// </summary>
         /// <returns></returns>
         public override bool IsTenantExternalSharingEnabled(string tenantUrl)
@@ -155,7 +156,8 @@ namespace Provisioning.Common
         }
 
         /// <summary>
-        /// 
+        /// Sets External Sharing
+        /// This is not supported in on-premises builds.
         /// </summary>
         /// <param name="url"></param>
         public override void SetExternalSharing(SiteRequestInformation siteInfo)

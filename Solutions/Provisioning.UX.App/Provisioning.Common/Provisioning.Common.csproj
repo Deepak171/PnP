@@ -113,7 +113,7 @@
     <Compile Include="Data\SiteRequests\SiteRequestFields.cs" />
     <Compile Include="Data\SiteRequests\SiteRequestList.cs" />
     <Compile Include="ISiteProvisioning.cs" />
-    <Compile Include="ISharePointService.cs" />
+    <Compile Include="ISharePointClientService.cs" />
     <Compile Include="Mail\EmailConfig.cs" />
     <Compile Include="Mail\EmailHelper.cs" />
     <Compile Include="Mail\FailureEmailMessage.cs" />
